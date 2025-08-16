@@ -47,8 +47,8 @@ const Button = React.forwardRef(({
     initial: { opacity: 0, y: 10, scale: 0.97 },
     animate: { opacity: 1, y: 0, scale: 1 },
     transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
-    whileHover: { scale: 1.04, y: -2 },
-    whileTap: { scale: 0.96 },
+    whileHover: {},
+    whileTap: {},
   };
 
   return (
