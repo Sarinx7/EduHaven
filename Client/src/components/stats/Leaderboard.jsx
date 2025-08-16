@@ -111,7 +111,18 @@ const Leaderboard = () => {
         </h3>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button variant="outline" className="flex items-center gap-1">
+            <Button
+              variant="outline"
+              className="flex items-center gap-1"
+              color="transparent"
+              motionProps={{
+                initial: { opacity: 0, y: 10, scale: 0.97 },
+                animate: { opacity: 1, y: 0, scale: 1 },
+                transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+                whileHover: {},
+                whileTap: { scale: 0.96 }
+              }}
+            >
               {view.charAt(0).toUpperCase() + view.slice(1)}{" "}
               <ChevronDown className="h-4 w-4" />
             </Button>
@@ -139,6 +150,14 @@ const Leaderboard = () => {
           variant="outline"
           onClick={handleFriendsOnlyToggle}
           className="relative w-14 h-8 rounded-full px-0 border-2 transition-all duration-200"
+          color="transparent"
+          motionProps={{
+            initial: { opacity: 0, y: 10, scale: 0.97 },
+            animate: { opacity: 1, y: 0, scale: 1 },
+            transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+            whileHover: {},
+            whileTap: {}
+          }}
         >
           <span
             className="absolute top-0.5 left-0.5 w-6 h-6 rounded-full transition-transform duration-200"

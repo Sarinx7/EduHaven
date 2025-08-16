@@ -283,7 +283,15 @@ const StudyStats = () => {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                className="flex items-center gap-1 hover:bg-gray-700 mt-4 md:mt-0"
+                className="flex items-center gap-1  mt-4 md:mt-0"
+                variant="primary"
+                motionProps={{
+                  initial: { opacity: 0, y: 0, scale: 1 },
+                  animate: { opacity: 1, y: 0, scale: 1 },
+                  transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+                  whileHover: {},
+                  whileTap: {},
+                }}
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {view.charAt(0).toUpperCase() + view.slice(1)}{" "}

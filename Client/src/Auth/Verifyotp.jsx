@@ -187,7 +187,15 @@ const OtpInput = () => {
         <Button
           onClick={handleVerifyOtp}
           disabled={isVerifying || otp.join("").length !== 6}
-          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition-all duration-200 shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed mb-4"
+          className="w-full font-semibold py-3 rounded-xl mb-4"
+          color="#2563eb"
+          motionProps={{
+            initial: { opacity: 0, y: 10, scale: 0.97 },
+            animate: { opacity: 1, y: 0, scale: 1 },
+            transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+            whileHover: { scale: 1.04, y: -2 },
+            whileTap: { scale: 0.96 }
+          }}
         >
           {isVerifying ? (
             <div className="flex items-center justify-center gap-2">

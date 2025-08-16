@@ -68,6 +68,14 @@ const Goals = () => {
           <DropdownMenuTrigger asChild>
             <Button
               className="flex items-center gap-1 hover:bg-gray-700"
+              variant="primary"
+              motionProps={{
+                initial: { opacity: 0, y: 10, scale: 0.97 },
+                animate: { opacity: 1, y: 0, scale: 1 },
+                transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+                whileHover: {},
+                whileTap: { scale: 0.96 }
+              }}
               onClick={() => setIsOpen(!isOpen)}
             >
               {view.charAt(0).toUpperCase() + view.slice(1)}

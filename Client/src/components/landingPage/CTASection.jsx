@@ -1,5 +1,6 @@
 import { Github, Play, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@/components/ui/button";
 
 function CTASection() {
   const navigate = useNavigate();
@@ -17,23 +18,46 @@ function CTASection() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <button
+            <Button
               onClick={() => navigate("/authenticate")}
-              className="flex items-center space-x-3 px-8 py-4 rounded-lg text-white font-semibold text-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300"
-              style={{ backgroundColor: "var(--btn)" }}
+              variant="primary"
+              size="lg"
+              className="flex items-center space-x-3 font-semibold text-lg"
+              motionProps={{
+                initial: { opacity: 0, y: 20, scale: 0.95 },
+                animate: { opacity: 1, y: 0, scale: 1 },
+                transition: { duration: 0.1, ease: [0.4, 0, 0.2, 1] },
+                whileHover: {scale: 1.04},
+                whileTap: {},
+              }}
             >
               <Play size={20} />
               <span>Get Started for Free</span>
-            </button>
+            </Button>
 
-            <a
-              href="https://github.com/Eduhaven/eduhaven"
-              className="flex items-center space-x-3 px-8 py-4 rounded-lg font-semibold text-lg border-2 hover:shadow-lg transform hover:scale-105 transition-all duration-300"
+            <Button
+              asChild
+              variant="secondary"
+              size="lg"
+              className="flex items-center space-x-3 font-semibold text-lg border-2"
               style={{ borderColor: "var(--btn)", color: "var(--btn)" }}
+              motionProps={{
+                initial: { opacity: 0, y: 20, scale: 0.95 },
+                animate: { opacity: 1, y: 0, scale: 1 },
+                transition: { duration: 0.5, ease: [0.4, 0, 0.2, 1] },
+                whileHover: { rotate: -2 },
+                whileTap: { scale: 0.97 },
+              }}
             >
-              <Github size={20} />
-              <span>View on GitHub</span>
-            </a>
+              <a
+                href="https://github.com/Eduhaven/eduhaven"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Github size={20} />
+                <span>View on GitHub</span>
+              </a>
+            </Button>
           </div>
 
           <div className="mt-8 flex justify-center">
