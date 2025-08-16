@@ -1,27 +1,34 @@
 import * as React from "react"
 import { Slot } from "@radix-ui/react-slot"
-import { cva } from "class-variance-authority"
+import { cva } from "class-variance-authority";
+
 import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
 
 const buttonVariants = cva(
-  "relative inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg text-sm font-medium transition-all duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 transform hover:scale-[1.03] active:scale-[0.97] w-auto",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        primary: "bg-[var(--btn)] text-white shadow-lg hover:bg-[var(--btn-hover)] focus-visible:ring-[var(--btn)] hover:shadow-xl",
-        secondary: "bg-black/30 text-[var(--txt)] px-6 py-2 rounded-lg flex items-center gap-2 transition-colors duration-300 ease-in-out hover:bg-[var(--txt)]/40",
-        danger: "bg-transparent text-white shadow-lg hover:bg-red-500 focus-visible:ring-red-500 hover:shadow-xl",
+        default:
+          "bg-primary text-primary-foreground shadow hover:bg-primary/90",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
+        outline:
+          "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
+        ghost: "hover:bg-accent hover:text-accent-foreground",
+        link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-10 px-6 py-2",
-        sm: "h-8 px-4 py-1.5 text-xs",
-        lg: "h-18 px-8 py-3 text-base",
-        icon: "h-10 w-10",
+        default: "h-9 px-4 py-2",
+        sm: "h-8 rounded-md px-3 text-xs",
+        lg: "h-10 rounded-md px-8",
+        icon: "h-9 w-9",
       },
     },
     defaultVariants: {
-      variant: "primary",
+      variant: "default",
       size: "default",
     },
   }
@@ -52,18 +59,12 @@ const Button = React.forwardRef(({
   };
 
   return (
-    <Comp
-      ref={ref}
+    (<Comp
       className={cn(buttonVariants({ variant, size, className }))}
-      style={style}
-      {...{ ...defaultMotion, ...motionProps }}
-      {...props}
-    >
-      {children}
-    </Comp>
-  )
+      ref={ref}
+      {...props} />)
+  );
 })
-
 Button.displayName = "Button"
 
 export { Button, buttonVariants }
